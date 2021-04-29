@@ -1,21 +1,275 @@
+<!--<html lang="en">
+   <head>
+  <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js">
+  </script>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+    var player = new Clappr.Player({source: "https://www.livedoomovies.com/02_BTSPORTHD_2_720p/chunklist.m3u8", parentId: "#player"});
+  </script>
+</body>
+</html>-->
+
+<html>
+  <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>-->
+	<!--<script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>-->
+	<script type="text/javascript" src="clappr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-ima-plugin@latest/dist/clappr-ima-plugin.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ewwink/clappr-quality-selector-plugin@latest/quality-selector.js"></script>
+	<script src="watermark.js"></script>
+  </head>
+ <script src="js/kpt.js"></script>
+
+<style>
+    body{
+        margin: 0px !important;
+    }
+    .refresh-link{
+        font-family:"Segoe UI",tahoma;color:#eee;text-align:center;display:inline-block;font-size:100%;background-color:#552a86;border-radius:5px;padding:3px 9px;margin-top:0px;text-decoration:none;position:absolute;z-index:5555;right:3px;cursor:pointer;top:0}
+    .refresh-link:after,.refresh-link:before{content:"";position:absolute;left:48%;top:46%;transform:translateX(-50%) translateY(-50%);width:55px;height:30px;display:block}
+
+    .refresh-link:after{z-index:1;border-radius:5px;transition:all .2s}
+
+    .rlink{font-family:"Segoe UI",tahoma;color:#eee;text-align:center;display:inline-block;font-size:100%;background-color:#552a86;border-radius:5px;padding:3px 9px;margin-top:0px;text-decoration:none;position:absolute;z-index:5555;left:3px;cursor:pointer;top:0}
+    .rlink:after,.rlink:before{content:"";position:absolute;left:48%;top:46%;transform:translateX(-50%) translateY(-50%);width:55px;height:30px;display:block}
+    .rlink:before{z-index:0;background:#ff00007a;animation:pulse-border 1.5s ease-out infinite;border-radius:5px}
+    .rlink:after{z-index:1;border-radius:5px;transition:all .2s}
+    @keyframes pulse-border{0%{transform:translateX(-50%) translateY(-50%) translateZ(0) scale(1);opacity:1}100%{transform:translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);opacity:0}}
+
+</style>
+  <body>
+    <div id="player"></div>
+    <script>
+		var elem=document.createElement("img");
+		elem.src='kittunew.jpg';
+		document.getElementById("player").appendChild(elem);
+		var valueright=0;
+		var valuetop=0;
+		if(screen.height/screen.width<1.7)
+		{
+		valuetop=(screen.width-((screen.height*9)/16))/2;
+		}
+		else
+		{
+		valueright=(screen.height-((screen.width*16)/9))/2;
+		}
+		elem.style.right=valueright+"px";
+		elem.style.position="absolute";
+		elem.style.height="15vh";
+		elem.style.width="22vw";
+		elem.style.top=valuetop+"px";
+		var elem1=document.createElement("img");
+		elem1.src='kittunew.jpg';
+		document.getElementById("player").appendChild(elem1);
+		var valueright1=0;
+		var valuetop1=0;
+		if(screen.height/screen.width<1.7)
+		{
+		valuetop1=(screen.width-((screen.height*9)/16))/2;
+		}
+		else
+		{
+		valueright1=(screen.height-((screen.width*16)/9))/2;
+		}
+		elem1.style.left=valueright1+"px";
+		elem1.style.position="absolute";
+		elem1.style.height="15vh";
+		elem1.style.width="22vw";
+		elem1.style.bottom=valuetop1+"px";
+      var player = new Clappr.Player(
+        {
+          source: 'https://manifest-gce-us-east4-production.cfcdn.mux.com/LqveFf00MV9qiEEbojuWFc3Eq9PM012xL2QEB9yXmwx00lXGyqHZKph1ysaYVfBIXpu00QkWxbJNZsRL7DMR7kOox1D8ryFU402Ld/rendition.m3u8?cdn=fastly&expires=1619809200&live=1&signature=NjA4YzUzYjBfZjg3NjUxODczNmFjMTU4YWE5ZWM2N2M0NTU1MDNmMWExMTVhZGRjMzAwZGQzM2Q2NTA5NGE0MjMyYzkyZGVkMQ%3D%3D&skid=default',
+
+		  plugins: [DashShakaPlayback],
+          shakaConfiguration: {
+            preferredAudioLanguage: 'pt-BR',
+            streaming: {
+              rebufferingGoal: 15
+            }
+          },
+          shakaOnBeforeLoad: function(shaka_player) {
+            console.log("error");// shaka_player.getNetworkingEngine().registerRequestFilter() ...
+          },
+			autoPlay: true,
+			toggleFullScreen: 0, 
+			height: "100%",
+			width: "100%",
+          parentId: '#player',
+		  //watermark: "https://dl.dropbox.com/s/0hk5xkqxhx64xsn/Football%20live.jpg", position:`bottom-left:${valueright}px`,
+		});
+		//player.getPlugin('click_to_pause').disable()
+		player.on(Clappr.Events.PLAYER_PLAY,function(){player.core.mediaControl.disable()});player.on(Clappr.Events.PLAYER_PAUSE,function(){player.core.mediaControl.disable()});player.on(Clappr.Events.PLAYER_FULLSCREEN,function(){player.core.mediaControl.disable()})
+		player.core.toggleFullScreen= function(){
+		
+		}
+	</script>
+	<script>
+	var elem=document.createElement("img"); elem.src='kittunew.jpg';document.getElementById('player').appendChild(elem);var valueright=0;var valuetop=0;if(screen.height/screen.width<1.7){valuetop=(screen.width-((screen.height*9)/16))/2}else{valueright=(screen.height-((screen.width*16)/9))/2}elem.style.left=valueright+"px";elem.style.position="absolute";elem.style.height="15vh";elem.style.width="22vw";elem.style.bottom=valuetop+"px";
+	</script>
 <script>
-var url = "/qaz.json";
-
-var data = {};
-data.firstname = "John";
-data.lastname  = "Snow";
-var json = JSON.stringify(data);
-
-var xhr = new XMLHttpRequest();
-xhr.open("POST", url, true);
-xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-xhr.onload = function () {
-	var users = JSON.parse(xhr.responseText);
-	if (xhr.readyState == 4 && xhr.status == "201") {
-		console.table(users);
-	} else {
-		console.error(users);
-	}
-}
-xhr.send(json);
+var elem=document.createElement("img"); elem.src='kittunew.jpg';document.getElementById('player').appendChild(elem);var valueright=0;var valuetop=0;if(screen.height/screen.width<1.7){valuetop=(screen.width-((screen.height*9)/16))/2}else{valueright=(screen.height-((screen.width*16)/9))/2}elem.style.right=valueright+"px";elem.style.position="absolute";elem.style.height="15vh";elem.style.width="22vw";elem.style.top=valuetop+"px";
 </script>
+	<!--<script>
+	    player = new Clappr.Player({
+        source: 'https://gold-price.live/hls/bein2.m3u8',
+        mimeType: "application/x-mpegURL",
+        maxBufferLength: "20",
+        autoPlay: true,
+        height: "100%",
+        width: "100%",
+        parentId: "#player",
+
+		plugins: {
+            container: [Watermark]
+        }
+        
+
+        mediacontrol: {seekbar: "#0000FF", buttons: "#fff"},
+
+    });
+	</script>-->
+
+  </body><!--<html lang="en">
+   <head>
+  <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js">
+  </script>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+    var player = new Clappr.Player({source: "https://www.livedoomovies.com/02_BTSPORTHD_2_720p/chunklist.m3u8", parentId: "#player"});
+  </script>
+</body>
+</html>-->
+
+<html>
+  <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>-->
+	<!--<script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>-->
+	<script type="text/javascript" src="clappr.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/clappr.level-selector/latest/level-selector.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr-ima-plugin@latest/dist/clappr-ima-plugin.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ewwink/clappr-quality-selector-plugin@latest/quality-selector.js"></script>
+	<script src="watermark.js"></script>
+  </head>
+ <script src="js/kpt.js"></script>
+
+<style>
+    body{
+        margin: 0px !important;
+    }
+    .refresh-link{
+        font-family:"Segoe UI",tahoma;color:#eee;text-align:center;display:inline-block;font-size:100%;background-color:#552a86;border-radius:5px;padding:3px 9px;margin-top:0px;text-decoration:none;position:absolute;z-index:5555;right:3px;cursor:pointer;top:0}
+    .refresh-link:after,.refresh-link:before{content:"";position:absolute;left:48%;top:46%;transform:translateX(-50%) translateY(-50%);width:55px;height:30px;display:block}
+
+    .refresh-link:after{z-index:1;border-radius:5px;transition:all .2s}
+
+    .rlink{font-family:"Segoe UI",tahoma;color:#eee;text-align:center;display:inline-block;font-size:100%;background-color:#552a86;border-radius:5px;padding:3px 9px;margin-top:0px;text-decoration:none;position:absolute;z-index:5555;left:3px;cursor:pointer;top:0}
+    .rlink:after,.rlink:before{content:"";position:absolute;left:48%;top:46%;transform:translateX(-50%) translateY(-50%);width:55px;height:30px;display:block}
+    .rlink:before{z-index:0;background:#ff00007a;animation:pulse-border 1.5s ease-out infinite;border-radius:5px}
+    .rlink:after{z-index:1;border-radius:5px;transition:all .2s}
+    @keyframes pulse-border{0%{transform:translateX(-50%) translateY(-50%) translateZ(0) scale(1);opacity:1}100%{transform:translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);opacity:0}}
+
+</style>
+  <body>
+    <div id="player"></div>
+    <script>
+		var elem=document.createElement("img");
+		elem.src='kittunew.jpg';
+		document.getElementById("player").appendChild(elem);
+		var valueright=0;
+		var valuetop=0;
+		if(screen.height/screen.width<1.7)
+		{
+		valuetop=(screen.width-((screen.height*9)/16))/2;
+		}
+		else
+		{
+		valueright=(screen.height-((screen.width*16)/9))/2;
+		}
+		elem.style.right=valueright+"px";
+		elem.style.position="absolute";
+		elem.style.height="15vh";
+		elem.style.width="22vw";
+		elem.style.top=valuetop+"px";
+		var elem1=document.createElement("img");
+		elem1.src='kittunew.jpg';
+		document.getElementById("player").appendChild(elem1);
+		var valueright1=0;
+		var valuetop1=0;
+		if(screen.height/screen.width<1.7)
+		{
+		valuetop1=(screen.width-((screen.height*9)/16))/2;
+		}
+		else
+		{
+		valueright1=(screen.height-((screen.width*16)/9))/2;
+		}
+		elem1.style.left=valueright1+"px";
+		elem1.style.position="absolute";
+		elem1.style.height="15vh";
+		elem1.style.width="22vw";
+		elem1.style.bottom=valuetop1+"px";
+      var player = new Clappr.Player(
+        {
+          source: 'https://manifest-gce-us-east4-production.cfcdn.mux.com/LqveFf00MV9qiEEbojuWFc3Eq9PM012xL2QEB9yXmwx00lXGyqHZKph1ysaYVfBIXpu00QkWxbJNZsRL7DMR7kOox1D8ryFU402Ld/rendition.m3u8?cdn=fastly&expires=1619809200&live=1&signature=NjA4YzUzYjBfZjg3NjUxODczNmFjMTU4YWE5ZWM2N2M0NTU1MDNmMWExMTVhZGRjMzAwZGQzM2Q2NTA5NGE0MjMyYzkyZGVkMQ%3D%3D&skid=default',
+
+		  plugins: [DashShakaPlayback],
+          shakaConfiguration: {
+            preferredAudioLanguage: 'pt-BR',
+            streaming: {
+              rebufferingGoal: 15
+            }
+          },
+          shakaOnBeforeLoad: function(shaka_player) {
+            console.log("error");// shaka_player.getNetworkingEngine().registerRequestFilter() ...
+          },
+			autoPlay: true,
+			toggleFullScreen: 0, 
+			height: "100%",
+			width: "100%",
+          parentId: '#player',
+		  //watermark: "https://dl.dropbox.com/s/0hk5xkqxhx64xsn/Football%20live.jpg", position:`bottom-left:${valueright}px`,
+		});
+		//player.getPlugin('click_to_pause').disable()
+		player.on(Clappr.Events.PLAYER_PLAY,function(){player.core.mediaControl.disable()});player.on(Clappr.Events.PLAYER_PAUSE,function(){player.core.mediaControl.disable()});player.on(Clappr.Events.PLAYER_FULLSCREEN,function(){player.core.mediaControl.disable()})
+		player.core.toggleFullScreen= function(){
+		
+		}
+	</script>
+	<script>
+	var elem=document.createElement("img"); elem.src='kittunew.jpg';document.getElementById('player').appendChild(elem);var valueright=0;var valuetop=0;if(screen.height/screen.width<1.7){valuetop=(screen.width-((screen.height*9)/16))/2}else{valueright=(screen.height-((screen.width*16)/9))/2}elem.style.left=valueright+"px";elem.style.position="absolute";elem.style.height="15vh";elem.style.width="22vw";elem.style.bottom=valuetop+"px";
+	</script>
+<script>
+var elem=document.createElement("img"); elem.src='kittunew.jpg';document.getElementById('player').appendChild(elem);var valueright=0;var valuetop=0;if(screen.height/screen.width<1.7){valuetop=(screen.width-((screen.height*9)/16))/2}else{valueright=(screen.height-((screen.width*16)/9))/2}elem.style.right=valueright+"px";elem.style.position="absolute";elem.style.height="15vh";elem.style.width="22vw";elem.style.top=valuetop+"px";
+</script>
+	<!--<script>
+	    player = new Clappr.Player({
+        source: 'https://gold-price.live/hls/bein2.m3u8',
+        mimeType: "application/x-mpegURL",
+        maxBufferLength: "20",
+        autoPlay: true,
+        height: "100%",
+        width: "100%",
+        parentId: "#player",
+
+		plugins: {
+            container: [Watermark]
+        }
+        
+
+        mediacontrol: {seekbar: "#0000FF", buttons: "#fff"},
+
+    });
+	</script>-->
+
+  </body>
