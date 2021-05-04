@@ -84,7 +84,8 @@
 		elem1.style.bottom=valuetop1+"px";
       var player = new Clappr.Player(
         {
-          source: 'https://dra1hxneqa37x.cloudfront.net/out/v1/47a7c7f15f12427eb72f2088c3f62737/index.m3u8',
+          source: 'http://31.220.41.90:8081/live/fr-beinsport2.stream/playlist.m3u8',
+          maxMaxBufferLength: 30,
 
 		  plugins: [DashShakaPlayback],
           shakaConfiguration: {
