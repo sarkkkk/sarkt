@@ -5,14 +5,15 @@
   <meta charset="utf-8">
   <title>WebTorrent & videojs demo</title>
 </head>
-<script>
+
+<body>
+<video id ="videoContainer" controls src=""></video>
+  <script>
   var url= window.location.href;
   console.log(url)
   var magnet= url.split("?")[2];
  document.getElementById("videoContainer").src=magnet;
   </script>
-<body>
-<video id ="videoContainer" controls src=""></video>
 <script src="https://cdn.jsdelivr.net/npm/@webtor/embed-sdk-js/dist/index.min.js" charset="utf-8" async></script>
   <script>
     window.onbeforeunload = function() {
