@@ -4,10 +4,40 @@
 <head>
   <meta charset="utf-8">
   <title>WebTorrent & videojs demo</title>
+  <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #player {
+            height: 80%;
+        }
+        #controls {
+            padding: 1rem;
+        }
+        #controls i {
+            padding-top: 0.3rem;
+            display: block;
+        }
+        .control {
+            padding-right: 1rem;
+        }
+        #files {
+            padding: 0.5rem;
+        }
+        #files a {
+            padding: 0.5rem;
+        }
+    </style>
+
 </head>
 
 <body>
-<video id ="videoContainer" controls src="" style="margin:0px;padding:0px;overflow:hidden"></video>
+  
+  <div id="player"></div>
   <script>
   var url= window.location.href;
   console.log(url)
@@ -15,6 +45,31 @@
     console.log(magnet);
  document.getElementById("videoContainer").src=magnet;
   </script>
+  <script>
+    window.webtor = window.webtor || [];
+        window.webtor.push({
+            id: 'player',
+            baseUrl: 'https://webtor.io',
+            // baseUrl: 'http://192.168.0.100:4000',
+            magnet: magnet,
+            // magnet: 'magnet:?xt=urn:btih:ca540adb8d37eb222d75aeca6954486842f72765',
+            width: '100%',
+            height: '100%',
+            features: {
+                continue:    false,
+                title:       false,
+                // p2pProgress: false,
+                // subtitles:   false,
+                settings:    false,
+                // fullscreen:  false,
+                // playpause:   false,
+                // currentTime: false,
+                // timeline:    false,
+                // duration:    false,
+                // volume:      false,
+                // chromecast:  false,
+            }
+    </script>
 <script src="too.js" charset="utf-8" async></script>
   <script>
     window.onbeforeunload = function() {
