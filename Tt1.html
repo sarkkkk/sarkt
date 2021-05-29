@@ -1,25 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>WebTorrent Demo</title>
-  </head>
-  <body>
-    <video id="video-container" controls="true"></video>
-  
 
-  <script src="//cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
-  <script type="text/javascript">
-  var client = new WebTorrent();
-  var torrentId = 'magnet:?xt=urn:btih:0E5BE9FFAC9FB0FEA7F458436A6F8A5B9C18A54F&dn=DevilsFilm+-+Sheena+Ryder%2CJaye+Summers+%28Sharing+Mommys+Boy+Toy%29&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2F47.ip-51-68-199.eu%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2920%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounceent.com&tr=wss%3A%2F%2Ftracker.webtorrent.io&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fsintel-1024-surround.mp4';
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>WebTorrent & videojs demo</title>
+  <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        #player {
+            height: 20%;
+        }
+        #controls {
+            padding: 1rem;
+        }
+        #controls i {
+            padding-top: 0.3rem;
+            display: block;
+        }
+        .control {
+            padding-right: 1rem;
+        }
+    </style>
 
-  client.add(torrentId, function (torrent) {
-    var file = torrent.files.find(function(file) {
-       return file.name.endsWith('.mp4');
-     });
-    var container = document.getElementById('video-container');
-    file.renderTo(container);
-  });
+</head>
+
+<body>
+  <div>
+    Click on the Download Icon to Start the downloading in your mobiel browser
+    </div>
+  <div id="player" scrolling= "auto"></div>
+  <script>
+  var url= window.location.href;
+  console.log(url)
+  var magnet= url.replace("https://dbkitt.netlify.app/tt.html?","")
+    console.log(magnet);
+//  document.getElementById("videoContainer").src=magnet;
   </script>
-</body>
+  <script>
+    window.webtor = window.webtor || [];
+        window.webtor.push({
+            id: 'player',
+            baseUrl: 'https://webtor.io',
+          title: 'Kittu Tv',
+            // baseUrl: 'http://192.168.0.100:4000',
+            magnet: magnet,
+          i18n:"khbhkbkhbkh",
+            // magnet: 'magnet:?xt=urn:btih:ca540adb8d37eb222d75aeca6954486842f72765',
+            width: '100%',
+            height: '100%',
+            features: {
+                continue:    false,
+                title:       false,
+                p2pProgress: false,
+                subtitles:   false,
+                settings:    false,
+                fullscreen:  false,
+                playpause:   false,
+                currentTime: false,
+                timeline:    false,
+                duration:    false,
+                volume:      false,
+                chromecast:  false,
+              embed: false,
+            }
+          });
+    </script>
+<script src="too.js" charset="utf-8" async></script>
+  <script>
+    window.onbeforeunload = function() {
+      
+  return true;
+}
+
+                            
+    </script>
+  </body>
 </html>
