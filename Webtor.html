@@ -106,8 +106,8 @@
         })
 
         // Stream the file in the browser
-        file.appendTo('#output')
-
+        file.appendTo('#output');
+        console.log('kljkjlk');
         // Trigger statistics refresh
         torrent.on('done', onDone)
         setInterval(onProgress, 500)
