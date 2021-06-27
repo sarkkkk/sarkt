@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <video id="plyr-video" poster="/path/to/video-poster.png" controls>
+  <video class="plyr-video" poster="/path/to/video-poster.png" controls>
   <source src="video.mp4.mp4" type="video/mp4">
   <source src="video.webm" type="video/webm">
   <!-- Captions are optional -->
@@ -21,7 +21,7 @@
   
   <script>
 //     plyr.setup("#plyr-video")
-    var player = new Plyr.setup("#plyr-video");
+    var player = new Plyr("#plyr-video");
 //     player.setup()
    </script>
   
