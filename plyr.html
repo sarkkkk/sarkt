@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
+  
 <head>
   <title>
     PLAY
    </title>
-  <script src="https://cdn.plyr.io/2.0.15/plyr.js"></script>
+  
   <link rel="stylesheet" href="https://cdn.plyr.io/2.0.15/plyr.css">
 </head>
+  <script src="https://cdn.plyr.io/2.0.15/plyr.js"></script>
 
 <body>
   <video id="plyr-video" controls>
@@ -21,8 +23,8 @@
   
   <script>
 //     plyr.setup("#plyr-video")
-    var player = new plyr.Plyr("#plyr-video");
-//     plyr.setup("#plyr-video");
+//     var player = new plyr.Plyr("#plyr-video");
+    plyr.setup("#plyr-video");
     player.play();
     player.fullscreen.enter();
     
