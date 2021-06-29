@@ -25,7 +25,19 @@
   <script>
     
 //     plyr.setup("#plyr-video")
-    document.getElementById("ur").src="https://s9.pandafiles.com:183/d/6m3wq7w727tuayapscf2e762mihk5m7twmiwx4rw6adcj2fp4wzcqf3sbjufoyn7g3qgnvxb/Episode_6-8.mp4";
+    var urlToPlay1= window.location.href.split("?")[1];
+    var urlToPlay="";
+    var subToAttach="";
+    if(urlToPlay1.includes("&"))
+    {
+      urlToPlay=urlToPlay1.split("&")[0];
+      subToAttach=urlToPlay1.split("&")[1];
+    }
+    else
+    {
+      urlToPlay=urlToPlay1;
+    }
+    document.getElementById("ur").src=urlToPlay;
     const player = new Plyr("#plyr-video",{
                             
       controls:['play-large',
