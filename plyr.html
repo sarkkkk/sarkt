@@ -42,9 +42,11 @@
       urlToPlay=urlToPlay1;
     }
     document.getElementById("ur").src=urlToPlay;
-    
+    var height=screen.height;
+    var width= screen.width;
+    var ratio= height/width;
     const player = new Plyr("#plyr-video",{
-//       ratio:"10:9",
+      ratio:ratio,
                             
       controls:['play-large',
                 'restart', // Restart playback
